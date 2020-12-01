@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promedio alumno</title>
+    <style>
+        ul li {
+            list-style: none;
+            padding: 0 15px;
+            display: inline-block;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #1b1a1a;
+        }
+
+        ul li a.active {
+            font-weight: bold;
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <header style="margin-bottom: 50px;">
+        <nav>
+            <ul>
+                <li>
+                    <a href="/agregar">Agregar</a>
+                </li>
+                <li>
+                    <a href="/promedio-alumno" class="active">Promedio alumno</a>
+                </li>
+                <li>
+                    <a href="/promedio-general">Promedio general</a>
+                </li>
+                <li>
+                    <a href="/promedio-materia">Promedio materia</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Promedio Alumno</h1>
+
+    <form action="/promedio-alumno" method="POST">
+        {{if .Alumnos}}
+        <label for="selectAlumno">Selecciona Alumno</label>
+        <select name="alumno" id="selectAlumno">
+            <option value="" hidden selected>Selecciona</option>
+            {{range .Alumnos}}
+                <option value="{{.Name}}">{{.Name}}</option>
+            {{end}}
+        </select>
+        <button type="submit">Buscar</button>
+        {{end}}
+    </form>
+
+    <div id="msg" style="margin-top: 30px; font-style: italic; font-size: 20px; font-weight: bold;">{{.Msg}}</div>
+</body>
+</html>

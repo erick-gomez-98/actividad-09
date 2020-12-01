@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        ul li {
+            list-style: none;
+            padding: 0 15px;
+            display: inline-block;
+        }
+
+        ul li a {
+            text-decoration: none;
+            color: #1b1a1a;
+        }
+
+        ul li a.active {
+            font-weight: bold;
+            color: blue;
+        } 
+    </style>
+</head>
+<body>
+    <header style="margin-bottom: 50px;">
+        <nav>
+            <ul>
+                <li>
+                    <a href="/agregar" class="active">Agregar</a>
+                </li>
+                <li>
+                    <a href="/promedio-alumno">Promedio alumno</a>
+                </li>
+                <li>
+                    <a href="/promedio-general">Promedio general</a>
+                </li>
+                <li>
+                    <a href="/promedio-materia">Promedio materia</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Capturar Alumno</h1>
+
+    <form action="/agregar" method="POST">
+        <label for="nombreAlumno">Nombre Alumno</label>
+        <input type="text" name="nombre" id="nombreAlumno" />
+
+        <label for="materia">Materia</label>
+        <input type="text" name="materia" id="materia" />
+
+        <label for="calificacion">Calificación</label>
+        <input type="number" min="0" max="100" name="calificacion" id="calificacion" />
+
+        <button type="submit">Agregar</button>
+    </form>
+
+    <div id="msg" style="margin-top: 30px; font-style: italic; font-size: 20px; font-weight: bold;">{{.Msg}}</div>
+
+
+    <script>
+        window.onload = function() {
+            var msg = document.getElementById("msg");
+            if(msg.innerText.length > 0){
+                setTimeout(function(){
+                    msg.innerText = ""
+                }, 3000)
+            }
+        }
+    </script>
+</body>
+</html>
